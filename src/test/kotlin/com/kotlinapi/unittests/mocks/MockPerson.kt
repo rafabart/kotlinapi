@@ -47,7 +47,7 @@ class MockPerson {
 
     fun mockVO(number: Int): PersonVOV1 {
         val person = PersonVOV1()
-        person.id = number.toLong()
+        person.idPerson = number.toLong()
         person.address = "Address Test$number"
         person.firstName = "First Name Test$number"
         person.gender = if (number % 2 == 0) "Male" else "Female"

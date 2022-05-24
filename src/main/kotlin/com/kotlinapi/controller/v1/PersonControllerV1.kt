@@ -1,7 +1,6 @@
 package com.kotlinapi.controller.v1
 
 import com.kotlinapi.data.vo.v1.PersonVOV1
-import com.kotlinapi.mapper.DozerMapper
 import com.kotlinapi.service.PersonService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -32,21 +31,18 @@ class PersonControllerV1(
     @ResponseStatus(HttpStatus.OK)
     fun findAll(): List<PersonVOV1> =
         service.findAll()
-            .let { pl -> DozerMapper.parseListObjects(pl, PersonVOV1::class.java) }
 
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     fun update(@RequestBody person: PersonVOV1): PersonVOV1 =
         service.update(person)
-            .let { p -> DozerMapper.parseObject(p, PersonVOV1::class.java) }
 
 
     @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
     fun findById(@PathVariable("id") id: Long): PersonVOV1 =
         service.findById(id)
-            .let { p -> DozerMapper.parseObject(p, PersonVOV1::class.java) }
 
 
     @DeleteMapping("{id}")
